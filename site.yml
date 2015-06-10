@@ -1,14 +1,14 @@
 ---
 
-# - name: Install Python
-#   hosts: all
-#   connection: ssh
-#   gather_facts: no
-#   tasks:
-#     - name: Install python
-#       raw: pacman -Sy --noconfirm python2
-#     - name: Install paramiko
-#       raw: pacman -S --noconfirm python2-paramiko
+ - name: Install Python
+   hosts: all
+   connection: ssh
+   gather_facts: no
+   tasks:
+    - name: Install python
+      raw: pacman -Sy --noconfirm python2
+    - name: Install paramiko
+      raw: pacman -S --noconfirm python2-paramiko
 
 - name: iBeacon Setup
   hosts: all
