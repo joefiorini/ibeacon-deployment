@@ -1,0 +1,12 @@
+- name: beacon| Upload script to setup beacon
+  template: src=start-beacon dest=/usr/local/bin/start-beacon mode=u+rwx
+
+- name: beacon| Upload systemd unit to autostart beacon
+  copy: src=beacon.unit dest=/etc/systemd/system/beacon.service
+
+- name: beacon| Reload systemd to read new service
+  command: systemctl daemon-reload
+
+- name: beacon| Auto start beacon service
+  service: name=beacon state=started enabled=yes
+

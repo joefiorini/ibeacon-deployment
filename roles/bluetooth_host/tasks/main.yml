@@ -1,0 +1,12 @@
+- name: bluetooth_host| Install packages
+  pacman: name={{item}} state=present update_cache=yes
+  with_items:
+    - libusb
+    - bluez
+    - bluez-utils
+
+- name: bluetooth_host| Enable bluetooth service
+  service: name=bluetooth state=started enabled=yes
+
+- name: Install udev rule to auto start the bluetooth dongle
+  copy: src=10-local.rules dest=/etc/udev/rules.d/10-local.rules
